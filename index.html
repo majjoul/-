@@ -3,155 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة الأناشيد الإسلامية</title>
+    <title>مكتبة الأناشيد الإسلامية والقصائد</title>
     <style>
-        /* تنسيقات بسيطة وسريعة للموقع */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #1db954;
+            --text-color: #ffffff;
+            --text-secondary: #b3b3b3;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .search-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .search-container input {
-            width: 80%;
-            max-width: 400px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .playlist {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .song-item {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
         }
-        .song-item:last-child {
-            border-bottom: none;
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 2rem;
         }
-        .song-info h4 {
-            margin: 0;
-            color: #2c3e50;
+
+        .nasheed-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
-        .song-info p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-        button {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #219150;
-        }
-        .player-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #2c3e50;
+
+        .nasheed-card {
+            background-color: var(--card-bg);
             padding: 15px;
-            text-align: center;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
         }
+
+        .nasheed-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .nasheed-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .nasheed-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         audio {
-            width: 80%;
-            max-width: 500px;
+            width: 100%;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>مكتبة الأناشيد الإسلامية</h1>
-        <p>أناشيد قديمة وجديدة بدون إيقاع</p>
-    </header>
+    <h1>🌙 مكتبة الأناشيد الإسلامية والقصائد</h1>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="filterSongs()" placeholder="ابحث عن نشيد أو منشد...">
-    </div>
+    <div class="nasheed-container">
 
-    <div class="playlist" id="songList">
-        <!-- النشيد الأول -->
-        <div class="song-item">
-            <div class="song-info">
-                <h4>فرش التراب</h4>
-                <p>المنشد: مشاري العرادة</p>
+        <!-- نشيد 1 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>ألا كل ماشية الخيزلى</h3>
+                <p>قصائد ~ المتنبي</p>
             </div>
-            <!-- ضع رابط ملف الصوت هنا -->
-            <button onclick="playSong('https://example.com/song1.mp3', 'فرش التراب - مشاري العرادة')">تشغيل ▶</button>
+            <audio controls>
+                <source src="audio/al-mutanabbi.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
         </div>
 
-        <!-- النشيد الثاني -->
-        <div class="song-item">
-            <div class="song-info">
-                <h4>سوف نبقى هنا</h4>
-                <p>المنشد: رامي محمد</p>
+        <!-- نشيد 2 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>تطاول ليلك بالأثمد</h3>
+                <p>قصائد ~ امرؤ القيس</p>
             </div>
-            <button onclick="playSong('https://example.com/song2.mp3', 'سوف نبقى هنا - رامي محمد')">تشغيل ▶</button>
+            <audio controls>
+                <source src="audio/imru-alquays.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
         </div>
+
+        <!-- نشيد 3 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>تبلغ بالقليل</h3>
+                <p>Tabalagh bil qaleel</p>
+            </div>
+            <audio controls>
+                <source src="audio/tabalagh.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 4 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>تبلغ بالقليل (فوكال)</h3>
+                <p>أسامة الصافي</p>
+            </div>
+            <audio controls>
+                <source src="audio/tabalagh-vocal.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 5 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>يا رفيق الدرب</h3>
+                <p>موسى العميرة (أبو علي)</p>
+            </div>
+            <audio controls>
+                <source src="audio/ya-rafiq-aldarb.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 6 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>أصاح رويدك</h3>
+                <p>موسى العميرة</p>
+            </div>
+            <audio controls>
+                <source src="audio/asahi-ruwaydaka.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 7 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>هذا عمر</h3>
+                <p>موسى العميرة</p>
+            </div>
+            <audio controls>
+                <source src="audio/hatha-umar.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 8 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>إملأ الأرض بتكبير</h3>
+                <p>أنشيد إسلامية</p>
+            </div>
+            <audio controls>
+                <source src="audio/imla-alard.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 9 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>جمال الوجود (The Beauty of Existence)</h3>
+                <p>محمد المقيط / حمود القحطاني</p>
+            </div>
+            <audio controls>
+                <source src="audio/beauty-of-existence.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 10 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>طريق الدموع (The Way of the Tears)</h3>
+                <p>محمد المقيط</p>
+            </div>
+            <audio controls>
+                <source src="audio/way-of-tears.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 11 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>يا ظلوماً (Ya Quluban)</h3>
+                <p>عبدالله السناني</p>
+            </div>
+            <audio controls>
+                <source src="audio/ya-quluban.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 12 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>لمن طلل أسائله</h3>
+                <p>قصائد ~ أبي العتاهية</p>
+            </div>
+            <audio controls>
+                <source src="audio/abi-alatahiya.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 13 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>يا عظيماً (Ya Adheeman)</h3>
+                <p>أحمد بوخاطر</p>
+            </div>
+            <audio controls>
+                <source src="audio/ya-adheeman.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 14 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>الحجاب (Al Hijab)</h3>
+                <p>أحمد بوخاطر</p>
+            </div>
+            <audio controls>
+                <source src="audio/al-hijab.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 15 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>إلى الله جمعاً</h3>
+                <p>أناشيد إسلامية</p>
+            </div>
+            <audio controls>
+                <source src="audio/ila-allah.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 16 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>طويل الشوق (Taweel Alshawq)</h3>
+                <p>عبدالرحمن كوناث</p>
+            </div>
+            <audio controls>
+                <source src="audio/taweel-alshawq.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 17 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>يا أمي (Ya Ummi)</h3>
+                <p>أحمد بوخاطر</p>
+            </div>
+            <audio controls>
+                <source src="audio/ya-ummi.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
+        <!-- نشيد 18 -->
+        <div class="nasheed-card">
+            <div class="nasheed-info">
+                <h3>أيا من يدعي الفهم</h3>
+                <p>مشاري بن راشد العفاسي</p>
+            </div>
+            <audio controls>
+                <source src="audio/aya-man-yaddai.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+
     </div>
 
-    <!-- مشغل الصوتيات الثابت في الأسفل -->
-    <div class="player-bar">
-        <span id="currentSongTitle" style="color: white; display: block; margin-bottom: 5px;">اختر نشيداً للاستماع</span>
-        <audio id="audioPlayer" controls>
-            متصفحك لا يدعم مشغل الصوتيات.
-        </audio>
-    </div>
-
-    <script>
-        // دالة تشغيل النشيد
-        function playSong(url, title) {
-            var player = document.getElementById('audioPlayer');
-            var titleDisplay = document.getElementById('currentSongTitle');
-            player.src = url;
-            titleDisplay.innerText = "جاري تشغيل: " + title;
-            player.play();
-        }
-
-        // دالة البحث في القائمة
-        function filterSongs() {
-            var input = document.getElementById('searchInput');
-            var filter = input.value.toLowerCase();
-            var playlist = document.getElementById('songList');
-            var items = playlist.getElementsByClassName('song-item');
-
-            for (var i = 0; i < items.length; i++) {
-                var text = items[i].innerText;
-                if (text.toLowerCase().indexOf(filter) > -1) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
-        }
-    </script>
 </body>
 </html>
